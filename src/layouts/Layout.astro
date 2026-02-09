@@ -1,0 +1,235 @@
+---
+interface Props {
+  title?: string;
+}
+const { title = 'Soma — Body · Heart · Movement · Connection' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Soma — Un espacio para el cuerpo, el corazón, el movimiento y la conexión. Talleres, arte y comunidad." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      // Scroll reveal animations
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        },
+        { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+      );
+      document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --cream: #f7f3ed;
+    --cream-dark: #ede8df;
+    --green: #4a7c59;
+    --green-light: #7ba889;
+    --green-dark: #2d4a35;
+    --yellow: #e8c547;
+    --yellow-light: #f2dfa0;
+    --terracotta: #c8785b;
+    --terracotta-light: #e0a58e;
+    --text: #1c1c1c;
+    --text-light: #6b6b6b;
+    --white: #ffffff;
+    --font-serif: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+    --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+    --nav-height: 72px;
+    --radius: 16px;
+    --radius-sm: 8px;
+    --radius-full: 50px;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--nav-height);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--text);
+    background-color: var(--cream);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    line-height: 1.15;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+  }
+
+  input,
+  textarea,
+  select {
+    font-family: inherit;
+    font-size: inherit;
+  }
+
+  /* ===== Bilingual System ===== */
+  html[lang='es'] .lang-en {
+    display: none !important;
+  }
+  html[lang='en'] .lang-es {
+    display: none !important;
+  }
+
+  /* ===== Reveal Animations ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+      opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 {
+    transition-delay: 0.1s;
+  }
+  .reveal-delay-2 {
+    transition-delay: 0.2s;
+  }
+  .reveal-delay-3 {
+    transition-delay: 0.3s;
+  }
+  .reveal-delay-4 {
+    transition-delay: 0.4s;
+  }
+
+  /* ===== Layout Utilities ===== */
+  section {
+    padding: 7rem 2rem;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    margin-bottom: 1.5rem;
+    color: var(--green-dark);
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-light);
+    max-width: 600px;
+    line-height: 1.7;
+  }
+
+  /* ===== Buttons ===== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.875rem 2rem;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    letter-spacing: 0.02em;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: var(--green);
+    color: var(--white);
+  }
+
+  .btn-primary:hover {
+    background: var(--green-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(74, 124, 89, 0.3);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--green-dark);
+    border: 1.5px solid var(--green-dark);
+  }
+
+  .btn-secondary:hover {
+    background: var(--green-dark);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    section {
+      padding: 4.5rem 1.25rem;
+    }
+  }
+</style>

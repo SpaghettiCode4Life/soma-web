@@ -1,0 +1,224 @@
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <span class="section-label reveal">
+          <span class="lang-es">Nosotros</span>
+          <span class="lang-en">About</span>
+        </span>
+
+        <h2 class="section-title reveal reveal-delay-1">
+          <span class="lang-es">¿Qué es Soma?</span>
+          <span class="lang-en">What is Soma?</span>
+        </h2>
+
+        <div class="about-body reveal reveal-delay-2">
+          <p>
+            <span class="lang-es"
+              >Soma es un espacio cultural y comunitario donde el cuerpo, el corazón y la creatividad se encuentran.
+              Creemos en la conexión entre personas a través del arte, el movimiento y la sanación.</span
+            >
+            <span class="lang-en"
+              >Soma is a cultural and community space where body, heart, and creativity meet. We believe in connecting
+              people through art, movement, and healing.</span
+            >
+          </p>
+          <p>
+            <span class="lang-es"
+              >Nuestro espacio acoge talleres, eventos y encuentros que invitan a explorar, crear y compartir. Un lugar
+              abierto, cálido y accesible para todas las personas que buscan algo más.</span
+            >
+            <span class="lang-en"
+              >Our space hosts workshops, events, and gatherings that invite you to explore, create, and share. An open,
+              warm, and accessible place for everyone looking for something more.</span
+            >
+          </p>
+        </div>
+
+        <div class="values reveal reveal-delay-3">
+          <span class="pill">
+            <span class="lang-es">Cuerpo</span>
+            <span class="lang-en">Body</span>
+          </span>
+          <span class="pill pill-alt">
+            <span class="lang-es">Corazón</span>
+            <span class="lang-en">Heart</span>
+          </span>
+          <span class="pill">
+            <span class="lang-es">Movimiento</span>
+            <span class="lang-en">Movement</span>
+          </span>
+          <span class="pill pill-warm">
+            <span class="lang-es">Comunidad</span>
+            <span class="lang-en">Community</span>
+          </span>
+          <span class="pill pill-alt">
+            <span class="lang-es">Creatividad</span>
+            <span class="lang-en">Creativity</span>
+          </span>
+          <span class="pill pill-warm">
+            <span class="lang-es">Sanación</span>
+            <span class="lang-en">Healing</span>
+          </span>
+          <span class="pill">
+            <span class="lang-es">Naturaleza</span>
+            <span class="lang-en">Nature</span>
+          </span>
+          <span class="pill pill-alt">Arte / Art</span>
+          <span class="pill">
+            <span class="lang-es">Presencia</span>
+            <span class="lang-en">Presence</span>
+          </span>
+          <span class="pill pill-warm">
+            <span class="lang-es">No-dualismo</span>
+            <span class="lang-en">Non-dualism</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="about-visual reveal reveal-delay-2">
+        <div class="image-placeholder placeholder-1">
+          <div class="placeholder-content">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22c4-4 8-7.5 8-12a8 8 0 1 0-16 0c0 4.5 4 8 8 12z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            <span>
+              <span class="lang-es">Foto del espacio</span>
+              <span class="lang-en">Space photo</span>
+            </span>
+          </div>
+        </div>
+        <div class="image-placeholder placeholder-2">
+          <div class="placeholder-content">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+            <span>
+              <span class="lang-es">Nuestra comunidad</span>
+              <span class="lang-en">Our community</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #about {
+    background: var(--cream);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-body p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-light);
+    margin-bottom: 1.25rem;
+  }
+
+  .about-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Value pills */
+  .values {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 2rem;
+  }
+
+  .pill {
+    display: inline-block;
+    padding: 0.45rem 1.1rem;
+    border-radius: var(--radius-full);
+    font-size: 0.88rem;
+    font-weight: 500;
+    background: var(--green);
+    color: var(--white);
+    transition: transform 0.2s ease;
+  }
+
+  .pill:hover {
+    transform: translateY(-2px);
+  }
+
+  .pill-alt {
+    background: var(--yellow);
+    color: var(--green-dark);
+  }
+
+  .pill-warm {
+    background: var(--terracotta);
+    color: var(--white);
+  }
+
+  /* Visual column */
+  .about-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 2rem;
+  }
+
+  .image-placeholder {
+    border-radius: var(--radius);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+
+  .image-placeholder:hover {
+    transform: scale(1.02);
+  }
+
+  .placeholder-1 {
+    background: linear-gradient(135deg, var(--green-light), var(--green));
+  }
+
+  .placeholder-2 {
+    background: linear-gradient(135deg, var(--yellow-light), var(--yellow));
+    aspect-ratio: 16 / 9;
+  }
+
+  .placeholder-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--white);
+    opacity: 0.85;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  .placeholder-2 .placeholder-content {
+    color: var(--green-dark);
+  }
+
+  @media (max-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .about-visual {
+      padding-top: 0;
+    }
+  }
+</style>
+

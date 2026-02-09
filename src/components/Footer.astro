@@ -1,0 +1,176 @@
+<footer id="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="footer-logo">
+          <svg class="footer-logo-mark" width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="16" fill="currentColor" />
+            <circle cx="16" cy="16" r="7" stroke="rgba(255,255,255,0.8)" stroke-width="2" fill="none" />
+            <circle cx="16" cy="16" r="2.2" fill="#E8C547" />
+          </svg>
+          <span class="footer-logo-text">SOMA</span>
+        </a>
+        <p class="footer-tagline">
+          <span class="lang-es">Cuerpo · Corazón · Movimiento<br />Presencia · Conexión</span>
+          <span class="lang-en">Body · Heart · Movement<br />Presence · Connection</span>
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4 class="footer-col-title">
+            <span class="lang-es">Navegar</span>
+            <span class="lang-en">Navigate</span>
+          </h4>
+          <a href="#about">
+            <span class="lang-es">Nosotros</span>
+            <span class="lang-en">About</span>
+          </a>
+          <a href="#gallery">
+            <span class="lang-es">Galería</span>
+            <span class="lang-en">Gallery</span>
+          </a>
+          <a href="#events">
+            <span class="lang-es">Eventos</span>
+            <span class="lang-en">Events</span>
+          </a>
+          <a href="#contact">
+            <span class="lang-es">Contacto</span>
+            <span class="lang-en">Contact</span>
+          </a>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">
+            <span class="lang-es">Conecta</span>
+            <span class="lang-en">Connect</span>
+          </h4>
+          <a href="#">Instagram</a>
+          <a href="#">Telegram</a>
+          <a href="mailto:hola@soma.space">Email</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 Soma. <span class="lang-es">Todos los derechos reservados.</span><span class="lang-en">All rights reserved.</span></p>
+      <p class="footer-made">
+        <span class="lang-es">Hecho con cuidado en Barcelona</span>
+        <span class="lang-en">Crafted with care in Barcelona</span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  #footer {
+    background: var(--text);
+    color: rgba(255, 255, 255, 0.65);
+    padding: 4rem 2rem 2rem;
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Brand */
+  .footer-brand {
+    max-width: 280px;
+  }
+
+  .footer-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .footer-logo-mark {
+    color: var(--green);
+  }
+
+  .footer-logo-text {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    letter-spacing: 0.1em;
+    color: var(--white);
+  }
+
+  .footer-tagline {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  /* Links */
+  .footer-links {
+    display: flex;
+    gap: 4rem;
+  }
+
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer-col-title {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-col a {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.6);
+    transition: color 0.2s ease;
+  }
+
+  .footer-col a:hover {
+    color: var(--white);
+  }
+
+  /* Bottom */
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.5rem;
+  }
+
+  .footer-copy,
+  .footer-made {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    #footer {
+      padding: 3rem 1.25rem 1.5rem;
+    }
+
+    .footer-top {
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .footer-links {
+      gap: 3rem;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      gap: 0.5rem;
+      text-align: center;
+    }
+  }
+</style>
+

@@ -1,0 +1,272 @@
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="logo" aria-label="Soma - Home">
+      <svg class="logo-mark" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="16" cy="16" r="16" fill="currentColor" />
+        <circle cx="16" cy="16" r="7" stroke="#F7F3ED" stroke-width="2" fill="none" />
+        <circle cx="16" cy="16" r="2.2" fill="#E8C547" />
+      </svg>
+      <span class="logo-text">SOMA</span>
+    </a>
+
+    <div class="nav-links" id="nav-links">
+      <a href="#about" class="nav-link">
+        <span class="lang-es">Nosotros</span>
+        <span class="lang-en">About</span>
+      </a>
+      <a href="#gallery" class="nav-link">
+        <span class="lang-es">Galería</span>
+        <span class="lang-en">Gallery</span>
+      </a>
+      <a href="#events" class="nav-link">
+        <span class="lang-es">Eventos</span>
+        <span class="lang-en">Events</span>
+      </a>
+      <a href="#contact" class="nav-link">
+        <span class="lang-es">Contacto</span>
+        <span class="lang-en">Contact</span>
+      </a>
+      <button class="lang-btn" id="lang-toggle" aria-label="Toggle language">EN</button>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<script>
+  // Language toggle
+  const langToggle = document.getElementById('lang-toggle');
+  const htmlEl = document.documentElement;
+
+  const savedLang = localStorage.getItem('soma-lang');
+  if (savedLang && (savedLang === 'en' || savedLang === 'es')) {
+    htmlEl.lang = savedLang;
+  }
+  updateLangBtn();
+
+  langToggle?.addEventListener('click', () => {
+    const next = htmlEl.lang === 'es' ? 'en' : 'es';
+    htmlEl.lang = next;
+    localStorage.setItem('soma-lang', next);
+    updateLangBtn();
+  });
+
+  function updateLangBtn() {
+    if (langToggle) langToggle.textContent = htmlEl.lang === 'es' ? 'EN' : 'ES';
+  }
+
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  function checkScroll() {
+    if (window.scrollY > 60) {
+      navbar?.classList.add('scrolled');
+    } else {
+      navbar?.classList.remove('scrolled');
+    }
+  }
+  window.addEventListener('scroll', checkScroll, { passive: true });
+  checkScroll();
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+
+  hamburger?.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks?.classList.toggle('open');
+    document.body.classList.toggle('menu-open');
+  });
+
+  // Close menu on link click
+  navLinks?.querySelectorAll('.nav-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      hamburger?.classList.remove('active');
+      navLinks?.classList.remove('open');
+      document.body.classList.remove('menu-open');
+    });
+  });
+</script>
+
+<style>
+  #navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: var(--nav-height);
+    transition:
+      background 0.35s ease,
+      box-shadow 0.35s ease;
+  }
+
+  #navbar.scrolled {
+    background: rgba(247, 243, 237, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: var(--green-dark);
+    z-index: 1001;
+  }
+
+  .logo-mark {
+    color: var(--green);
+  }
+
+  .logo-text {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.25rem;
+  }
+
+  .nav-link {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text);
+    position: relative;
+    padding: 0.25rem 0;
+    transition: color 0.25s ease;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--green);
+    border-radius: 1px;
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--green);
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .lang-btn {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--green-dark);
+    background: var(--cream-dark);
+    padding: 0.4rem 0.85rem;
+    border-radius: var(--radius-full);
+    transition:
+      background 0.25s ease,
+      color 0.25s ease;
+  }
+
+  .lang-btn:hover {
+    background: var(--green);
+    color: var(--white);
+  }
+
+  /* Hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 4px;
+    z-index: 1001;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  @media (max-width: 768px) {
+    .nav-inner {
+      padding: 0 1.25rem;
+    }
+
+    .hamburger {
+      display: flex;
+    }
+
+    .nav-links {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--cream);
+      flex-direction: column;
+      justify-content: center;
+      gap: 2.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 1000;
+    }
+
+    .nav-links.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .nav-link {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+    }
+
+    .nav-link::after {
+      display: none;
+    }
+
+    .lang-btn {
+      font-size: 0.9rem;
+      padding: 0.5rem 1.2rem;
+    }
+  }
+</style>
+
