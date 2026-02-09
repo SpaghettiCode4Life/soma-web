@@ -10,8 +10,11 @@ const links = [
 <nav class="navbar" id="navbar">
   <div class="navbar__inner container">
     <a href="#" class="navbar__logo" aria-label="Soma">
-      <span class="navbar__logo-mark">S</span>
-      <span class="navbar__logo-text">OMA</span>
+      <svg class="navbar__logo-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect class="logo-bg" x="1.5" y="1.5" width="61" height="61" rx="12" fill="#FFFBF4" stroke="#1A1A2E" stroke-width="3"/>
+        <text x="32" y="44" text-anchor="middle" font-family="'Space Grotesk', Arial Black, sans-serif" font-weight="900" font-size="30" fill="#FF5C38" letter-spacing="1">S</text>
+        <circle class="logo-dot" cx="50" cy="14" r="5" fill="#BFFF00" stroke="#1A1A2E" stroke-width="1.5"/>
+      </svg>
     </a>
 
     <button class="navbar__toggle" aria-label="Abrir menú" aria-expanded="false">
@@ -58,6 +61,7 @@ const links = [
 </script>
 
 <style>
+  /* ===== BASE (mobile-first): transparent, ink text ===== */
   .navbar {
     position: fixed;
     top: 0;
@@ -65,15 +69,7 @@ const links = [
     right: 0;
     z-index: 1000;
     padding: 1.25rem 0;
-    transition: all 0.3s ease;
-  }
-
-  .navbar.scrolled {
-    background: rgba(255, 251, 244, 0.92);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    padding: 0.8rem 0;
-    border-bottom: var(--border-thin);
+    transition: all 0.35s ease;
   }
 
   .navbar__inner {
@@ -82,40 +78,25 @@ const links = [
     justify-content: space-between;
   }
 
-  /* Logo: minimal geometric mark + text */
   .navbar__logo {
     display: flex;
     align-items: center;
-    gap: 0;
-    transition: opacity 0.2s;
+    transition: transform 0.2s ease, opacity 0.2s;
   }
 
   .navbar__logo:hover {
-    opacity: 0.8;
+    transform: scale(1.05);
   }
 
-  .navbar__logo-mark {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    background: var(--coral);
-    color: var(--cream);
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 1rem;
-    letter-spacing: 0;
-    border: 2px solid var(--ink);
+  .navbar__logo-icon {
+    width: 40px;
+    height: 40px;
+    display: block;
   }
 
-  .navbar__logo-text {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 1.35rem;
-    letter-spacing: 0.06em;
-    color: var(--ink);
-    margin-left: 0.15rem;
+  .logo-bg,
+  .logo-dot {
+    transition: fill 0.35s ease, stroke 0.35s ease;
   }
 
   .navbar__links {
@@ -132,6 +113,7 @@ const links = [
     letter-spacing: 0.07em;
     position: relative;
     padding: 0.25rem 0;
+    transition: color 0.35s ease;
   }
 
   .navbar__links a::after {
@@ -169,6 +151,57 @@ const links = [
     transition: all 0.3s ease;
   }
 
+  /* ===== SCROLLED (all sizes): cream bg, ink text ===== */
+  .navbar.scrolled {
+    background: rgba(255, 251, 244, 0.94);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 0.8rem 0;
+    border-bottom: var(--border-thin);
+    color: var(--ink);
+  }
+
+  .navbar.scrolled .navbar__links a {
+    color: var(--ink);
+  }
+
+  .navbar.scrolled .navbar__toggle span {
+    background: var(--ink);
+  }
+
+  /* Logo on scroll: cream bg, ink stroke (default SVG values) */
+  .navbar.scrolled .logo-bg {
+    fill: #FFFBF4;
+    stroke: #1A1A2E;
+  }
+
+  .navbar.scrolled .logo-dot {
+    stroke: #1A1A2E;
+  }
+
+  /* ===== DESKTOP: dark navbar when NOT scrolled ===== */
+  @media (min-width: 769px) {
+    .navbar:not(.scrolled) {
+      background: var(--ink);
+      color: var(--cream);
+    }
+
+    .navbar:not(.scrolled) .navbar__links a {
+      color: var(--cream);
+    }
+
+    /* Logo on dark bg: ink fill, cream stroke */
+    .navbar:not(.scrolled) .logo-bg {
+      fill: #1A1A2E;
+      stroke: #FFFBF4;
+    }
+
+    .navbar:not(.scrolled) .logo-dot {
+      stroke: #FFFBF4;
+    }
+  }
+
+  /* ===== MOBILE ===== */
   @media (max-width: 768px) {
     .navbar__toggle {
       display: flex;
@@ -184,7 +217,7 @@ const links = [
       justify-content: center;
       align-items: center;
       gap: 2.5rem;
-      background: var(--cream);
+      background: var(--ink);
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s ease;
@@ -192,6 +225,7 @@ const links = [
 
     .navbar__links a {
       font-size: 1.6rem;
+      color: var(--cream) !important;
     }
 
     .navbar.open .navbar__links {

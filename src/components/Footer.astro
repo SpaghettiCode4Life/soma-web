@@ -12,8 +12,11 @@ const navLinks = [
     <div class="footer__top">
       <div class="footer__brand">
         <a href="#" class="footer__logo" aria-label="Soma">
-          <span class="footer__logo-mark">S</span>
-          <span class="footer__logo-text">OMA</span>
+          <svg class="footer__logo-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1.5" y="1.5" width="61" height="61" rx="12" fill="#FFFBF4" stroke="#1A1A2E" stroke-width="3"/>
+            <text x="32" y="44" text-anchor="middle" font-family="'Syne', Arial Black, sans-serif" font-weight="900" font-size="30" fill="#FF5C38" letter-spacing="1">S</text>
+            <circle cx="50" cy="14" r="5" fill="#BFFF00" stroke="#1A1A2E" stroke-width="1.5"/>
+          </svg>
         </a>
         <p class="footer__tagline">
           Espacio creativo compartido.<br/>
@@ -81,39 +84,37 @@ const navLinks = [
     margin-bottom: 4rem;
   }
 
-  /* Logo matching navbar */
+  /* Logo — favicon SVG icon */
   .footer__logo {
     display: inline-flex;
     align-items: center;
     margin-bottom: 1rem;
-    transition: opacity 0.2s;
+    transition: transform 0.2s ease, opacity 0.2s;
   }
 
   .footer__logo:hover {
-    opacity: 0.8;
+    transform: scale(1.05);
   }
 
-  .footer__logo-mark {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    background: var(--coral);
-    color: var(--cream);
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 0.9rem;
-    border: 2px solid var(--cream);
+  .footer__logo-icon {
+    width: 36px;
+    height: 36px;
+    display: block;
   }
 
-  .footer__logo-text {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 1.6rem;
-    letter-spacing: 0.06em;
-    color: var(--cream);
-    margin-left: 0.1rem;
+  /* Override fills for dark footer background */
+  .footer__logo-icon rect {
+    fill: var(--ink);
+    stroke: var(--cream);
+  }
+
+  .footer__logo-icon text {
+    fill: var(--coral);
+  }
+
+  .footer__logo-icon circle {
+    fill: var(--lime);
+    stroke: var(--cream);
   }
 
   .footer__tagline {

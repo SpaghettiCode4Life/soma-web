@@ -16,8 +16,8 @@
   --green: #2EC4B6;
   --orange: #FF9F1C;
 
-  /* Typography */
-  --font-display: 'Syne', sans-serif;
+  /* Typography — Space Grotesk for everything: sober, geometric, young */
+  --font-display: 'Space Grotesk', sans-serif;
   --font-body: 'Space Grotesk', sans-serif;
 
   /* Shadows & Borders (comic feel) */
@@ -60,7 +60,7 @@ body {
 
 h1, h2, h3, h4, h5 {
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.08;
 }
 
