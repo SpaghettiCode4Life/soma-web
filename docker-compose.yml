@@ -1,0 +1,16 @@
+services:
+  soma-web-secondary:
+    build: .
+    restart: unless-stopped
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.soma-web-secondary.rule=Host('soma-secondary.cloud.alesanchez.es')"
+      - "traefik.http.routers.soma-web-secondary.entryPoints=web,websecure"
+      - "traefik.http.routers.soma-web-secondary.middlewares=secured-external"
+      - traefik.http.services.soma-web-secondary.loadbalancer.server.port=80
+
+networks:
+  traefik:
+    external: true
