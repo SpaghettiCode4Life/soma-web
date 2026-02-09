@@ -1,0 +1,16 @@
+services:
+  soma-web-primary:
+    build: .
+    restart: unless-stopped
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.soma-web-primary.rule=Host('soma-primary.cloud.alesanchez.es')"
+      - "traefik.http.routers.soma-web-primary.entryPoints=web,websecure"
+      - "traefik.http.routers.soma-web-primary.middlewares=secured-external"
+      - traefik.http.services.soma-web-primary.loadbalancer.server.port=80
+
+networks:
+  traefik:
+    external: true
