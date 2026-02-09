@@ -1,0 +1,254 @@
+---
+const features = [
+  { icon: '🌿', text: 'Patio con luz natural' },
+  { icon: '🎨', text: 'Sala diáfana de 60m²' },
+  { icon: '🔊', text: 'Equipo de sonido' },
+  { icon: '🪑', text: 'Mobiliario adaptable' },
+];
+---
+
+<section class="booking" id="booking">
+  <!-- Background art -->
+  <div class="booking__bg" aria-hidden="true">
+    <div class="booking__bg-ring"></div>
+    <div class="booking__bg-circle"></div>
+    <div class="booking__bg-half"></div>
+  </div>
+
+  <div class="container">
+    <div class="booking__grid">
+      <div class="booking__content">
+        <h2 class="section-title reveal">
+          ¿Tienes un <span class="booking__highlight">proyecto</span>?
+        </h2>
+
+        <p class="booking__text reveal reveal-delay-1">
+          Soma es un espacio abierto a propuestas afines: talleres, residencias, 
+          sesiones, encuentros. Si lo que haces tiene que ver con cuerpo, arte, 
+          movimiento o comunidad, hablemos.
+        </p>
+
+        <div class="booking__features reveal reveal-delay-2">
+          {features.map((f) => (
+            <div class="booking__feature">
+              <span class="booking__feature-icon">{f.icon}</span>
+              <span class="booking__feature-text">{f.text}</span>
+            </div>
+          ))}
+        </div>
+
+        <div class="booking__actions reveal reveal-delay-3">
+          <a href="mailto:hola@soma.space" class="btn btn--coral">Escríbenos →</a>
+          <a href="#" class="btn btn--outline">Ver el espacio</a>
+        </div>
+      </div>
+
+      <!-- Decorative side -->
+      <div class="booking__visual reveal">
+        <div class="booking__deco">
+          <div class="booking__deco-card booking__deco-card--1">
+            <span>✦ Talleres</span>
+          </div>
+          <div class="booking__deco-card booking__deco-card--2">
+            <span>✦ Residencias</span>
+          </div>
+          <div class="booking__deco-card booking__deco-card--3">
+            <span>✦ Encuentros</span>
+          </div>
+          <div class="booking__deco-card booking__deco-card--4">
+            <span>✦ Sesiones</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .booking {
+    background: var(--cream);
+    border-top: var(--border);
+    border-bottom: var(--border);
+    position: relative;
+  }
+
+  /* Background art */
+  .booking__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .booking__bg-ring {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 2px dashed var(--yellow);
+    opacity: 0.15;
+    bottom: -80px;
+    right: -60px;
+    animation: spin-slow 45s linear infinite;
+  }
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .booking__bg-circle {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: var(--pink);
+    opacity: 0.05;
+    top: -40px;
+    left: 10%;
+  }
+
+  .booking__bg-half {
+    position: absolute;
+    width: 160px;
+    height: 80px;
+    background: var(--coral);
+    opacity: 0.05;
+    border-radius: 160px 160px 0 0;
+    bottom: 0;
+    right: 30%;
+  }
+
+  .booking__grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .booking__highlight {
+    color: var(--coral);
+    position: relative;
+    display: inline-block;
+  }
+
+  .booking__text {
+    font-size: 1.05rem;
+    max-width: 480px;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+
+  .booking__features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .booking__feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+
+  .booking__feature-icon {
+    font-size: 1.2rem;
+  }
+
+  .booking__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* Decorative stacked cards */
+  .booking__visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .booking__deco {
+    position: relative;
+    width: 280px;
+    height: 320px;
+  }
+
+  .booking__deco-card {
+    position: absolute;
+    background: #fff;
+    border: var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1rem 1.5rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
+  }
+
+  .booking__deco-card:hover {
+    z-index: 10;
+    transform: scale(1.06) !important;
+  }
+
+  .booking__deco-card--1 {
+    top: 10px;
+    left: 10px;
+    transform: rotate(-6deg);
+    background: var(--coral);
+    color: var(--cream);
+  }
+
+  .booking__deco-card--2 {
+    top: 80px;
+    right: 10px;
+    transform: rotate(3deg);
+    background: var(--cream);
+    color: var(--ink);
+  }
+
+  .booking__deco-card--3 {
+    bottom: 80px;
+    left: 20px;
+    transform: rotate(5deg);
+    background: var(--violet);
+    color: var(--cream);
+  }
+
+  .booking__deco-card--4 {
+    bottom: 10px;
+    right: 30px;
+    transform: rotate(-3deg);
+    background: var(--blue);
+    color: var(--cream);
+  }
+
+  @media (max-width: 768px) {
+    .booking__grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .booking__features {
+      grid-template-columns: 1fr;
+    }
+
+    .booking__visual {
+      order: -1;
+    }
+
+    .booking__deco {
+      width: 240px;
+      height: 280px;
+    }
+  }
+</style>

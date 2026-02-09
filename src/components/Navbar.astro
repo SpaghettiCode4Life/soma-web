@@ -1,0 +1,214 @@
+---
+const links = [
+  { href: '#about', label: 'Soma' },
+  { href: '#gallery', label: 'Galería' },
+  { href: '#events', label: 'Agenda' },
+  { href: '#booking', label: 'Espacio' },
+];
+---
+
+<nav class="navbar" id="navbar">
+  <div class="navbar__inner container">
+    <a href="#" class="navbar__logo" aria-label="Soma">
+      <span class="navbar__logo-mark">S</span>
+      <span class="navbar__logo-text">OMA</span>
+    </a>
+
+    <button class="navbar__toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="navbar__links">
+      {links.map((link) => (
+        <li><a href={link.href}>{link.label}</a></li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<script>
+  const toggle = document.querySelector('.navbar__toggle');
+  const nav = document.querySelector('.navbar');
+  const links = document.querySelectorAll('.navbar__links a');
+
+  toggle?.addEventListener('click', () => {
+    nav?.classList.toggle('open');
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+  });
+
+  links.forEach((link) => {
+    link.addEventListener('click', () => {
+      nav?.classList.remove('open');
+      toggle?.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    if (!navbar) return;
+    if (window.scrollY > 60) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+</script>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 1.25rem 0;
+    transition: all 0.3s ease;
+  }
+
+  .navbar.scrolled {
+    background: rgba(255, 251, 244, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 0.8rem 0;
+    border-bottom: var(--border-thin);
+  }
+
+  .navbar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Logo: minimal geometric mark + text */
+  .navbar__logo {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    transition: opacity 0.2s;
+  }
+
+  .navbar__logo:hover {
+    opacity: 0.8;
+  }
+
+  .navbar__logo-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background: var(--coral);
+    color: var(--cream);
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: 0;
+    border: 2px solid var(--ink);
+  }
+
+  .navbar__logo-text {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.35rem;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    margin-left: 0.15rem;
+  }
+
+  .navbar__links {
+    display: flex;
+    align-items: center;
+    gap: 2.2rem;
+  }
+
+  .navbar__links a {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    position: relative;
+    padding: 0.25rem 0;
+  }
+
+  .navbar__links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2.5px;
+    background: var(--coral);
+    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .navbar__links a:hover::after {
+    width: 100%;
+  }
+
+  /* Mobile toggle */
+  .navbar__toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 10;
+  }
+
+  .navbar__toggle span {
+    display: block;
+    width: 26px;
+    height: 2.5px;
+    background: var(--ink);
+    transition: all 0.3s ease;
+  }
+
+  @media (max-width: 768px) {
+    .navbar__toggle {
+      display: flex;
+    }
+
+    .navbar__links {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2.5rem;
+      background: var(--cream);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .navbar__links a {
+      font-size: 1.6rem;
+    }
+
+    .navbar.open .navbar__links {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .navbar.open .navbar__toggle span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .navbar.open .navbar__toggle span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .navbar.open .navbar__toggle span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+  }
+</style>

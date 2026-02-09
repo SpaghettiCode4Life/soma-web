@@ -1,0 +1,55 @@
+---
+const words = [
+  'cuerpo', 'arte', 'movimiento', 'comunidad',
+  'encuentro', 'taller', 'patio', 'luz',
+  'crear', 'compartir', 'jugar', 'habitar',
+];
+const separator = ' ✦ ';
+const content = words.join(separator) + separator;
+---
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span class="marquee__text">{content}</span>
+    <span class="marquee__text">{content}</span>
+    <span class="marquee__text">{content}</span>
+  </div>
+</div>
+
+<style>
+  .marquee {
+    overflow: hidden;
+    border-top: var(--border);
+    border-bottom: var(--border);
+    background: var(--ink);
+    color: var(--cream);
+    padding: 0.9rem 0;
+    position: relative;
+  }
+
+  .marquee__track {
+    display: flex;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+  }
+
+  .marquee__text {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+    padding-right: 0;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-33.333%); }
+  }
+
+  .marquee:hover .marquee__track {
+    animation-play-state: paused;
+  }
+</style>
+

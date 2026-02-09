@@ -1,0 +1,243 @@
+/* ============================================
+   SOMA — Design System
+   Comic-inspired, artistic & warm
+   ============================================ */
+
+:root {
+  /* Color Palette */
+  --cream: #FFFBF4;
+  --ink: #1A1A2E;
+  --coral: #FF5C38;
+  --blue: #3D5AFF;
+  --lime: #BFFF00;
+  --violet: #9B5DE5;
+  --yellow: #FFD166;
+  --pink: #FF6B9D;
+  --green: #2EC4B6;
+  --orange: #FF9F1C;
+
+  /* Typography */
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Space Grotesk', sans-serif;
+
+  /* Shadows & Borders (comic feel) */
+  --shadow: 4px 4px 0 var(--ink);
+  --shadow-lg: 6px 6px 0 var(--ink);
+  --shadow-sm: 2px 2px 0 var(--ink);
+  --border: 2.5px solid var(--ink);
+  --border-thin: 1.5px solid var(--ink);
+
+  /* Radius — square/comic, not rounded */
+  --radius: 6px;
+  --radius-sm: 4px;
+  --radius-pill: 4px;
+
+  /* Spacing */
+  --section-pad: 7rem;
+  --section-pad-mobile: 4rem;
+}
+
+/* ---- Reset ---- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1.08;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ---- Utilities ---- */
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* ---- Buttons (square/comic) ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.8rem 1.8rem;
+  border: var(--border);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: none;
+  position: relative;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+
+.btn--coral {
+  background: var(--coral);
+  color: var(--cream);
+}
+
+.btn--lime {
+  background: var(--lime);
+  color: var(--ink);
+}
+
+.btn--violet {
+  background: var(--violet);
+  color: var(--cream);
+}
+
+.btn--blue {
+  background: var(--blue);
+  color: var(--cream);
+}
+
+.btn--pink {
+  background: var(--pink);
+  color: var(--cream);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--ink);
+}
+
+.btn--outline:hover {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+/* ---- Tags (square comic labels) ---- */
+.tag {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.7rem;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-pill);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: all 0.15s ease;
+}
+
+.tag--coral { background: var(--coral); color: var(--cream); border-color: var(--coral); }
+.tag--lime { background: var(--lime); color: var(--ink); border-color: var(--lime); }
+.tag--violet { background: var(--violet); color: var(--cream); border-color: var(--violet); }
+.tag--blue { background: var(--blue); color: var(--cream); border-color: var(--blue); }
+.tag--pink { background: var(--pink); color: var(--cream); border-color: var(--pink); }
+.tag--yellow { background: var(--yellow); color: var(--ink); border-color: var(--yellow); }
+
+/* ---- Section Spacing ---- */
+section {
+  padding: var(--section-pad) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ---- Section Titles (contained comic) ---- */
+.section-title {
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.section-subtitle {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  max-width: 480px;
+  opacity: 0.7;
+  line-height: 1.6;
+}
+
+/* ---- Selection ---- */
+::selection {
+  background: var(--coral);
+  color: var(--cream);
+}
+
+/* ---- Scroll reveal ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  section {
+    padding: var(--section-pad-mobile) 0;
+  }
+
+  .container {
+    padding: 0 1.25rem;
+  }
+}
